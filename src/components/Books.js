@@ -22,7 +22,13 @@ export default function Books() {
     console.log(data)
     return (
         data && data.map((item, index) => (
-            <div key={item.id}>Cartea {index+1} - {item.id}</div>
+            <div key={item.id}>
+                <img src={item.thumbnail} alt=""/>
+                <br></br>
+                Cartea {index + 1} - {item.id}
+                <br></br>
+                {item.thumbnail}
+            </div>
         ))
 
     )
