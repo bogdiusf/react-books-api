@@ -12,7 +12,7 @@ export default function DisplaySomething() {
     console.log(user, categories, books)
     return (
         <div>
-            sss
+            {JSON.stringify(value)}
         </div>
     )
 }

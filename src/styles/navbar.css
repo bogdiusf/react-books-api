@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  height: 10vh;
+  background: lightblue;
+  display: flex;
+  padding: 20px;
+}
