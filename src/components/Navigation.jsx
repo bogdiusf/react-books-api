@@ -1,34 +1,48 @@
 import React, { useContext } from "react";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import 'bootstrap/dist/css/bootstrap.css'
-import { DataFromApiContext } from '../context/DataFromApi'
+import '../styles/navbar.css'
+import { DataFromApiContext } from "../context/DataFromApi";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Styled from 'styled-components'
+import User from './User'
+import DisplaySomething from './DisplaySomething'
+
+const StyledLink = Styled(Link)`
+  font-size: 25px;
+  color: black;
+  text-decoration: none;
+`
+const StyledTitle = Styled.div`
+  font-size: 35px;
+  color: white;
+  width: fit-content;
+  margin-top: 2.5vh;
+  margin-left: 20px;
+`
 
 export default function Navigation() {
+  const value = useContext(DataFromApiContext);
+  const { user } = value;
 
-  const value = useContext(DataFromApiContext)
-  const { user, categories } = value
   return (
-    <Navbar bg="danger" expand="xl">
-      <Container>
-        <Navbar.Brand>Books library</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" expand="xl">
-          <Nav className="me-auto">
-            <Nav.Link>{user?.first_name}</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              {
-                categories && categories.map(item => (
-                  <NavDropdown.Item href="#action/3.1" key={item.id}>{item.name}</NavDropdown.Item>
-                ))
-              }
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar >
+    <Router>
+      <nav>
+        <div className="hamburger">
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
+        <ul className="nav-links">
+          <li><StyledTitle>Books Library</StyledTitle></li>
+          <li><StyledLink to={'/'}>All books</StyledLink></li>
+          <li><img src={user?.avatar} alt="user_avatar" /></li>
+          <li><StyledLink to={'/user'}>{user?.first_name} {user?.last_name}</StyledLink></li>
+        </ul>
+      </nav>
+
+      <Switch>
+        <Route exact path='/' component={DisplaySomething} />
+        <Route path='/user' component={User} />
+      </Switch>
+    </Router >
   );
 }

@@ -4,12 +4,14 @@ import { DataFromApiContext } from '../context/DataFromApi'
 export default function DisplaySomething() {
 
     const value = useContext(DataFromApiContext)
-    const {
-        books,
-        categories,
-        user
-    } = value
-    console.log(user, categories, books)
+    if (value) {
+        const {
+            books,
+            categories,
+            user
+        } = value
+    }
+
     return (
         <div>
             {JSON.stringify(value)}
