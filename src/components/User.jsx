@@ -6,6 +6,9 @@ const Wrapper = Styled.div`
     height: 90vh;
     display: grid;
     grid-template-rows: 40% 60%;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 `
 const WrapperChildOne = Styled.div`
     display: flex;

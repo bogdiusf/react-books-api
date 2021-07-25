@@ -4,7 +4,7 @@ import { DataFromApiContext } from "../context/DataFromApi";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Styled from 'styled-components'
 import User from './User'
-import DisplaySomething from './DisplaySomething'
+import AllBooks from './AllBooks'
 
 const StyledLink = Styled(Link)`
   font-size: 25px;
@@ -15,7 +15,8 @@ const StyledTitle = Styled.div`
   font-size: 35px;
   color: white;
   width: fit-content;
-  margin-top: 2.5vh;
+  display: flex;
+  align-items: center;
   margin-left: 20px;
 `
 
@@ -31,16 +32,17 @@ export default function Navigation() {
           <div className="line"></div>
           <div className="line"></div>
         </div>
+        <StyledTitle>Books Library</StyledTitle>
         <ul className="nav-links">
-          <li><StyledTitle>Books Library</StyledTitle></li>
           <li><StyledLink to={'/'}>All books</StyledLink></li>
+          <span></span>
           <li><img src={user?.avatar} alt="user_avatar" /></li>
           <li><StyledLink to={'/user'}>{user?.first_name} {user?.last_name}</StyledLink></li>
         </ul>
       </nav>
 
       <Switch>
-        <Route exact path='/' component={DisplaySomething} />
+        <Route exact path='/' component={AllBooks} />
         <Route path='/user' component={User} />
       </Switch>
     </Router >
