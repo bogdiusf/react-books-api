@@ -5,23 +5,36 @@ import '../styles/books.css'
 
 const Wrapper = Styled.div`
     display: grid;
-    width: 60%;
     margin-left: auto;
     margin-right: auto;
     grid-template-columns: 30% 70%;
     margin-top: 5vh;
 `
-const TitleWrapper = Styled.div`
+const CategoryTitleWrapper = Styled.div`
+    font-size: 30px;
+    padding-left: 20px;
+    font-weight: 400;
+    @media screen and (max-width:768px){
+        display: none;
+    }
+`
+const BooksTitleWrapper = Styled.div`
     font-size: 30px;
     padding-left: 20px;
     font-weight: 400;
 `
+
 const CategoryWrapper = Styled.ul`
     display: grid;
     list-style: none;
     grid-gap: 20px;
     margin-top: 30px;
-    width: 80%;
+    width: 250px;
+
+    @media screen and (max-width:768px){
+        display: none;
+    }
+
 `
 const StyledLi = Styled.li`
     padding: 10px;
@@ -38,8 +51,8 @@ export default function AllBooks() {
    const {categories} = value
     return (
         <Wrapper>
-            <TitleWrapper>Categories</TitleWrapper>
-            <TitleWrapper>Books</TitleWrapper>
+            <CategoryTitleWrapper>Categories</CategoryTitleWrapper>
+            <BooksTitleWrapper>Books</BooksTitleWrapper>
             <CategoryWrapper>
                 <StyledLi style={{backgroundColor:'#f26c4f'}} className="categories">All</StyledLi>
                 {

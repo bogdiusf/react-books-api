@@ -8,14 +8,13 @@ nav{
   height: 10vh;
   background: #0972bc;
   display: flex;
-  width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
 .nav-links {
   display: grid;
   list-style: none;
-  grid-template-columns: 0.8fr 0 0.7fr 1fr;
+  grid-template-columns: 1fr 0 0.7fr 1fr;
   grid-auto-flow: row;
   align-items: center;
   margin-left: auto;
