@@ -23,7 +23,7 @@
   height: 100vh;
   width: 100%;
   background-color: #0972bc;
-  animation: in 1s;
+  animation: in 0.5s;
   transform-origin: 100%;
   position: fixed;
   top: 0;

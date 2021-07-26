@@ -99,7 +99,7 @@ export default function AllBooks() {
                                 .map(item => <div style={{ backgroundColor: `${item.color}` }} key={item.id} className="categoryInsideBook">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</div>)
                         }
                     </div>
-                    <div className="bookInModalFirstColumn">{bookInfoForModal.description}</div>
+                    <div className="bookInModalSecondColumn">{bookInfoForModal.description}</div>
                 </div>
             </Modal>
         </Wrapper >
