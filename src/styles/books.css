@@ -13,6 +13,13 @@
   display: block;
   font-weight: 300;
   text-decoration: underline;
+  transition: 0.3s ease-in-out;
+}
+.categories .editEnabled:hover {
+  display: block;
+  font-weight: 300;
+  text-decoration: underline;
+  color: white;
 }
 
 .firstColumn {

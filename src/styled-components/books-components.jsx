@@ -13,6 +13,11 @@ export const Wrapper = Styled.div`
         width: 90%;
         grid-template-columns: 25% 70%;
     }
+    @media screen and (max-width: 430px){
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 `
 export const CategoryTitleWrapper = Styled.div`
     font-size: 30px;
@@ -27,13 +32,14 @@ export const BooksTitleWrapper = Styled.div`
     font-size: 30px;
     padding-left: 20px;
     font-weight: 400;
+    display: flex;
 `
 
 export const CategoryWrapper = Styled.ul`
     display: grid;
     list-style: none;
     grid-gap: 20px;
-    margin-top: 30px;
+    margin-top: 20px;
     width: 250px;
     max-height: 250px;
     
@@ -57,6 +63,11 @@ export const StyledLi = Styled.li`
 export const BooksWrapper = Styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 430px){
+        display: grid;
+        grid-template-columns: 1fr;
+    }
     
 `
 export const EachBook = Styled.div`

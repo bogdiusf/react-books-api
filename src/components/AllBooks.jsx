@@ -42,14 +42,10 @@ export default function AllBooks() {
         const edit = document.getElementById(`edit-${categoryId}`)
         li.addEventListener('click', (e) => {
             e.preventDefault()
+            e.stopPropagation()
             li.classList.toggle('categories-clicked')
             edit.classList.toggle('editEnabled')
         })
-    }
-
-    const revertToAllBooks = () => {
-        const newArr = [...books]
-        setBooksToFilter(newArr)
     }
 
     return (
@@ -57,7 +53,7 @@ export default function AllBooks() {
             <CategoryTitleWrapper>Categories</CategoryTitleWrapper>
             <BooksTitleWrapper>Books ({booksToFilter?.length})</BooksTitleWrapper>
             <CategoryWrapper>
-                <StyledLi style={{ backgroundColor: '#f26c4f' }} className="categories" onClick={() => revertToAllBooks()}>All</StyledLi>
+                <StyledLi style={{ backgroundColor: '#f26c4f' }} className="categories" onClick={() => setBooksToFilter([...books])}>All</StyledLi>
                 {
                     categories && categories.map(item => (
                         <StyledLi
@@ -65,8 +61,7 @@ export default function AllBooks() {
                             key={item.id}
                             className="categories"
                             id={`category-${item.id}`}
-                            onClick={() => filterBooks(item.id)}>
-                            {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                            onClick={() => filterBooks(item.id)}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                             <span className="editDisabled" id={`edit-${item.id}`}>edit</span>
                         </StyledLi>
                     ))
@@ -85,9 +80,9 @@ export default function AllBooks() {
                                 }
                             </div>
                             <div className="secondColumn">
-                                <div className="bookTitle">{book.title}</div>
+                                <div className="bookTitle">{book.title.slice(0, 10)}</div>
                                 <div className="bookDescription">
-                                    <div>{book.description.slice(0, 150)}...</div>
+                                    <div>{book.description.slice(0, 75)}...</div>
                                     <div></div>
                                 </div>
                                 <div className="readMoreLink" onClick={() => showModal(book.thumbnail, book.title, book.description, book.categoryId)}>Read more</div>

@@ -18,20 +18,33 @@ const StyledTitle = Styled.div`
   display: flex;
   align-items: center;
   margin-left: 20px;
+
+  @media screen and (max-width: 430px){
+    font-size: 30px;
+    position: absolute;
+    margin-top: 2vh;
+  }
 `
 
 export default function Navigation() {
+
   const value = useContext(DataFromApiContext);
   const { user } = value;
 
+  const toggleNavbar = () => {
+    const hamburgerMenu = document.querySelector('.hamburger')
+    const navbar = document.querySelector('.navbar')
+    hamburgerMenu.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation();
+      navbar.classList.toggle('navbar-active')
+    })
+  }
+
+
   return (
     <Router>
-      <nav>
-        <div className="hamburger">
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
-        </div>
+      <nav className="navbar">
         <StyledTitle>Books Library</StyledTitle>
         <ul className="nav-links">
           <li><StyledLink to={'/'}>All books</StyledLink></li>
@@ -39,6 +52,11 @@ export default function Navigation() {
           <li><img src={user?.avatar} alt="user_avatar" /></li>
           <li><StyledLink to={'/user'}>{user?.first_name} {user?.last_name}</StyledLink></li>
         </ul>
+        <div className="hamburger" onClick={() => toggleNavbar()}>
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
       </nav>
 
       <Switch>
