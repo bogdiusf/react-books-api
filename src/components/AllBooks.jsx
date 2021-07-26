@@ -1,67 +1,64 @@
 import React, { useContext } from 'react'
-import Styled from 'styled-components'
 import { DataFromApiContext } from '../context/DataFromApi'
 import '../styles/books.css'
-
-const Wrapper = Styled.div`
-    display: grid;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: 30% 70%;
-    margin-top: 5vh;
-`
-const CategoryTitleWrapper = Styled.div`
-    font-size: 30px;
-    padding-left: 20px;
-    font-weight: 400;
-    @media screen and (max-width:768px){
-        display: none;
-    }
-`
-const BooksTitleWrapper = Styled.div`
-    font-size: 30px;
-    padding-left: 20px;
-    font-weight: 400;
-`
-
-const CategoryWrapper = Styled.ul`
-    display: grid;
-    list-style: none;
-    grid-gap: 20px;
-    margin-top: 30px;
-    width: 250px;
-
-    @media screen and (max-width:768px){
-        display: none;
-    }
-
-`
-const StyledLi = Styled.li`
-    padding: 10px;
-    border-radius: 5px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    margin-left: 20px;
-    border: 1px solid black;
-`
+import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook } from '../styled-components/books-components'
 
 export default function AllBooks() {
 
     const value = useContext(DataFromApiContext)
-   const {categories} = value
+    const { categories, books, setBooks, setBooksToFilter, booksToFilter } = value
+
+    const filterBooks = (categoryId) => {
+        if (books === booksToFilter) {
+            const newArr = booksToFilter.filter(book => book.categoryId === categoryId)
+            setBooksToFilter(newArr)
+        }
+        else {
+            const tempArr = [...books]
+            setBooksToFilter(tempArr)
+            const newArr2 = booksToFilter.filter(book => book.categoryId === categoryId)
+            setBooksToFilter(newArr2)
+        }
+    }
+    const revertToAllBooks = () => {
+        const newArr = [...books]
+        setBooksToFilter(newArr)
+    }
     return (
         <Wrapper>
             <CategoryTitleWrapper>Categories</CategoryTitleWrapper>
-            <BooksTitleWrapper>Books</BooksTitleWrapper>
+            <BooksTitleWrapper>Books ({booksToFilter?.length})</BooksTitleWrapper>
             <CategoryWrapper>
-                <StyledLi style={{backgroundColor:'#f26c4f'}} className="categories">All</StyledLi>
+                <StyledLi style={{ backgroundColor: '#f26c4f' }} className="categories" onClick={() => revertToAllBooks()}>All</StyledLi>
                 {
-                    categories.map(item => (
-                        <StyledLi style={{backgroundColor:`${item.color}`}} key={item.id} className="categories">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</StyledLi>
+                    categories && categories.map(item => (
+                        <StyledLi style={{ backgroundColor: `${item.color}` }} key={item.id} className="categories" onClick={() => filterBooks(item.id)}>
+                            {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                            <span className="appearEditOnFocus">edit</span>
+                        </StyledLi>
                     ))
                 }
             </CategoryWrapper>
-            <div></div>
+            <BooksWrapper>
+                {
+                    booksToFilter && booksToFilter.map(book => (
+                        <EachBook key={book.id}>
+                            <div className="firstColumn">
+                                <img src={book.thumbnail} alt="" />
+                                {
+                                    categories && categories.filter(category => category.id === book.categoryId)
+                                        .map(item => <div style={{ backgroundColor: `${item.color}` }} key={item.id} className="categoryInsideBook">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</div>)
+                                }
+                            </div>
+                            <div className="secondColumn">
+                                <div className="bookTitle">{book.title}</div>
+                                <div className="bookDescription">{book.description.slice(0, 150)}...</div>
+                                <div className="readMoreLink">Read more</div>
+                            </div>
+                        </EachBook>
+                    ))
+                }
+            </BooksWrapper>
         </Wrapper>
     )
 }

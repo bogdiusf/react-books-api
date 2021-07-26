@@ -5,6 +5,7 @@ export const DataFromApiContext = createContext();
 
 export default function DataFromApi({ children }) {
   const [books, setBooks] = useState([]);
+  const [booksToFilter, setBooksToFilter] = useState(null)
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
 
@@ -15,6 +16,7 @@ export default function DataFromApi({ children }) {
       newArr.push(item);
     });
     setBooks(newArr);
+    setBooksToFilter(newArr);
   };
 
   const getCategoriesFromApi = async () => {
@@ -39,6 +41,9 @@ export default function DataFromApi({ children }) {
 
   const value = {
     books,
+    booksToFilter,
+    setBooks,
+    setBooksToFilter,
     categories,
     user,
   };

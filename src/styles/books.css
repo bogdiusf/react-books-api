@@ -1,7 +1,41 @@
-.categories:hover{
-    cursor: pointer;
+.categories:hover {
+  cursor: pointer;
 }
-.categories-clicked{
-    width: 80%;
-    margin-left: 20%;
+.categories-clicked {
+  width: 80%;
+  margin-left: 20%;
+}
+.categories .appearEditOnFocus {
+  display: none;
+}
+.firstColumn {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.secondColumn {
+  padding: 15px;
+}
+.firstColumn > img {
+  height: 100px;
+  width: 100px;
+  border-radius: 0;
+}
+.categoryInsideBook {
+  margin-top: 10px;
+  padding-left: 5px;
+  width: 100px;
+}
+
+.bookTitle {
+  font-size: 20px;
+}
+.bookDescription {
+  margin-top: 10px;
+}
+.readMoreLink {
+  margin-top: 10px;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
 }
