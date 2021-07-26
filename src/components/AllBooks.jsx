@@ -6,24 +6,34 @@ import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, Styl
 export default function AllBooks() {
 
     const value = useContext(DataFromApiContext)
-    const { categories, books, setBooks, setBooksToFilter, booksToFilter } = value
+    const { categories, books, setBooksToFilter, booksToFilter } = value
 
     const filterBooks = (categoryId) => {
-        if (books === booksToFilter) {
+        if (books.length === booksToFilter.length) {
             const newArr = booksToFilter.filter(book => book.categoryId === categoryId)
             setBooksToFilter(newArr)
         }
         else {
-            const tempArr = [...books]
-            setBooksToFilter(tempArr)
-            const newArr2 = booksToFilter.filter(book => book.categoryId === categoryId)
-            setBooksToFilter(newArr2)
+            setBooksToFilter(books.filter(book => book.categoryId === categoryId))
         }
+
+        const li = document.getElementById(`category-${categoryId}`)
+        const edit = document.getElementById(`edit-${categoryId}`)
+        li.addEventListener('click', (e) => {
+            e.preventDefault()
+            li.classList.toggle('categories-clicked')
+            edit.classList.toggle('editEnabled')
+        })
+
     }
+
     const revertToAllBooks = () => {
         const newArr = [...books]
         setBooksToFilter(newArr)
     }
+    // const toggleClass = () => {
+    //     setIsLinkEnabled(!isEditLinkEnabled);
+    // };
     return (
         <Wrapper>
             <CategoryTitleWrapper>Categories</CategoryTitleWrapper>
@@ -32,9 +42,14 @@ export default function AllBooks() {
                 <StyledLi style={{ backgroundColor: '#f26c4f' }} className="categories" onClick={() => revertToAllBooks()}>All</StyledLi>
                 {
                     categories && categories.map(item => (
-                        <StyledLi style={{ backgroundColor: `${item.color}` }} key={item.id} className="categories" onClick={() => filterBooks(item.id)}>
+                        <StyledLi
+                            style={{ backgroundColor: `${item.color}` }}
+                            key={item.id}
+                            className="categories"
+                            id={`category-${item.id}`}
+                            onClick={() => filterBooks(item.id)}>
                             {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                            <span className="appearEditOnFocus">edit</span>
+                            <span className="editDisabled" id={`edit-${item.id}`}>edit</span>
                         </StyledLi>
                     ))
                 }

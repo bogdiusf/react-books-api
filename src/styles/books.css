@@ -3,11 +3,18 @@
 }
 .categories-clicked {
   width: 80%;
-  margin-left: 20%;
+  margin-right: 0;
+  cursor: pointer;
 }
-.categories .appearEditOnFocus {
+.categories .editDisabled {
   display: none;
 }
+.categories .editEnabled {
+  display: block;
+  font-weight: 300;
+  text-decoration: underline;
+}
+
 .firstColumn {
   padding: 15px;
   display: flex;
