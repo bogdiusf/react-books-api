@@ -1,20 +1,24 @@
 .categories:hover {
   cursor: pointer;
 }
+
 .categories-clicked {
   width: 80%;
   margin-right: 0;
   cursor: pointer;
 }
+
 .categories .editDisabled {
   display: none;
 }
+
 .categories .editEnabled {
   display: block;
   font-weight: 300;
   text-decoration: underline;
   transition: 0.3s ease-in-out;
 }
+
 .categories .editEnabled:hover {
   display: block;
   font-weight: 300;
@@ -26,15 +30,19 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
+
 .secondColumn {
   padding: 15px;
 }
-.firstColumn > img {
+
+.firstColumn>img {
   height: 100px;
   width: 100px;
   border-radius: 0;
 }
+
 .categoryInsideBook {
   margin-top: 10px;
   padding-left: 5px;
@@ -45,15 +53,18 @@
   font-size: 20px;
   display: flex;
 }
+
 .bookDescription {
   margin-top: 10px;
 }
+
 .readMoreLink {
   margin-top: 10px;
   text-decoration: underline;
   color: blue;
   cursor: pointer;
 }
+
 .bookInModal {
   display: flex;
   gap: 20px;
@@ -61,6 +72,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .bookInModalFirstColumn {
   display: flex;
   flex-direction: column;

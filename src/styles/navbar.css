@@ -1,7 +1,4 @@
 @keyframes in {
-  0% {
-    transform: scaleY(0);
-  }
   100% {
     transform: scaleY(1);
   }
@@ -22,10 +19,24 @@
   transition: 1s;
 }
 
+.navbar-active {
+  height: 100vh;
+  width: 100%;
+  background-color: #0972bc;
+  animation: in 1s;
+  transform-origin: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
 .nav-links {
   display: grid;
   width: 40%;
-  list-style: none;
   justify-content: right;
   grid-template-columns: 20% 0 20% 25%;
   grid-auto-flow: row;
@@ -53,6 +64,52 @@ img {
   border-radius: 50%;
 }
 
+.nav-title-hidden {
+  display: none !important;
+}
+
+.mobile-nav-links-wrapper {
+  display: none;
+}
+
+.mobile-nav-links-wrapper-expanded {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.mobileView-user-info {
+  display: flex;
+  margin-top: 70px;
+  margin-left: 20px;
+  align-items: center;
+  color: white;
+  gap: 20px;
+  font-size: 30px;
+}
+
+.hidden-nav-links {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.hidden-nav-links>div:nth-child(1) {
+  font-size: 35px;
+  color: white;
+}
+
+.hidden-nav-links>div:nth-child(2) {
+  font-size: 35px;
+  color: white;
+}
+
+.hidden-nav-links>ul {
+  font-size: 25px;
+  color: white;
+  margin-left: 20px;
+}
+
+/* MEDIA SCREEN QUERIES */
+
 @media screen and (max-width: 1400px) {
   .nav-links {
     grid-template-columns: 25% 0 25% 35%;
@@ -79,13 +136,5 @@ img {
     width: 40px;
     background-color: white;
     margin: 4px;
-  }
-  .navbar-active {
-    height: 100vh;
-    width: 100%;
-    background-color: #0972bc;
-    animation: in 1s;
-    transform-origin: 100% 0;
-    overflow: hidden;
   }
 }

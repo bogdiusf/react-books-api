@@ -42,7 +42,6 @@ export default function AllBooks() {
         const edit = document.getElementById(`edit-${categoryId}`)
         li.addEventListener('click', (e) => {
             e.preventDefault()
-            e.stopPropagation()
             li.classList.toggle('categories-clicked')
             edit.classList.toggle('editEnabled')
         })
@@ -103,9 +102,6 @@ export default function AllBooks() {
                     <div className="bookInModalFirstColumn">{bookInfoForModal.description}</div>
                 </div>
             </Modal>
-
-
-
         </Wrapper >
     )
 }

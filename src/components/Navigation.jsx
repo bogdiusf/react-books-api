@@ -1,57 +1,60 @@
 import React, { useContext } from "react";
 import '../styles/navbar.css'
 import { DataFromApiContext } from "../context/DataFromApi";
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Styled from 'styled-components'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { StyledLink, StyledTitle } from '../styled-components/navbar-components'
 import User from './User'
 import AllBooks from './AllBooks'
-
-const StyledLink = Styled(Link)`
-  font-size: 25px;
-  color: black;
-  text-decoration: none;
-`
-const StyledTitle = Styled.div`
-  font-size: 35px;
-  color: white;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  margin-left: 20px;
-
-  @media screen and (max-width: 430px){
-    font-size: 30px;
-    position: absolute;
-    margin-top: 2vh;
-  }
-`
 
 export default function Navigation() {
 
   const value = useContext(DataFromApiContext);
-  const { user } = value;
+  const { user, categories } = value;
 
   const toggleNavbar = () => {
     const hamburgerMenu = document.querySelector('.hamburger')
     const navbar = document.querySelector('.navbar')
+    const booksLibraryTitle = document.querySelector('.nav-title')
+    const mobileNavLinksWrapper = document.querySelector('.mobile-nav-links-wrapper')
     hamburgerMenu.addEventListener('click', (e) => {
       e.preventDefault()
       e.stopPropagation();
       navbar.classList.toggle('navbar-active')
+      document.body.style.overflow = 'hidden'
+      booksLibraryTitle.classList.toggle('nav-title-hidden')
+      mobileNavLinksWrapper.classList.toggle('mobile-nav-links-wrapper-expanded')
     })
   }
-
 
   return (
     <Router>
       <nav className="navbar">
-        <StyledTitle>Books Library</StyledTitle>
+        <StyledTitle className="nav-title">Books Library</StyledTitle>
+        <div className="mobile-nav-links-wrapper">
+          <div className="mobileView-user-info">
+            <img src={user?.avatar} alt="" />
+            <div className="expanded-nav-title-hidden">{user?.first_name} {user?.last_name}</div>
+          </div>
+          <div className="hidden-nav-links">
+            <div >All books</div>
+            <div>Categories</div>
+            <ul>
+              <li><StyledLink to={'/'} style={{ color: 'white' }} onClick={() => console.log('xx')}>All</StyledLink></li>
+              {
+                categories && categories.map(item => (
+                  <li key={item.id}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
         <ul className="nav-links">
           <li><StyledLink to={'/'}>All books</StyledLink></li>
           <span></span>
           <li><img src={user?.avatar} alt="user_avatar" /></li>
           <li><StyledLink to={'/user'}>{user?.first_name} {user?.last_name}</StyledLink></li>
         </ul>
+
         <div className="hamburger" onClick={() => toggleNavbar()}>
           <div className="line"></div>
           <div className="line"></div>
