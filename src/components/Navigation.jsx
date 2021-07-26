@@ -20,7 +20,13 @@ export default function Navigation() {
       e.preventDefault()
       e.stopPropagation();
       navbar.classList.toggle('navbar-active')
-      document.body.style.overflow = 'hidden'
+      if (document.body.style.overflow !== 'hidden') {
+        document.body.style.overflow = 'hidden'
+      }
+      else {
+        document.body.style.overflow = 'scroll'
+      }
+
       booksLibraryTitle.classList.toggle('nav-title-hidden')
       mobileNavLinksWrapper.classList.toggle('mobile-nav-links-wrapper-expanded')
     })
