@@ -1,12 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { DataFromApiContext } from '../context/DataFromApi'
 import '../styles/books.css'
 import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook } from '../styled-components/books-components'
+import { Modal } from 'antd';
+import 'antd/dist/antd.css';
 
 export default function AllBooks() {
 
     const value = useContext(DataFromApiContext)
     const { categories, books, setBooksToFilter, booksToFilter } = value
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [bookInfoForModal, setBookInfoForModal] = useState({})
+
+    const showModal = (thumbnail, title, description, categoryId) => {
+        setIsModalVisible(true);
+        setBookInfoForModal({
+            thumbnail: thumbnail,
+            title: title,
+            description: description,
+            categoryId: categoryId
+        })
+    };
+    const handleOk = () => {
+        setIsModalVisible(false);
+    };
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
 
     const filterBooks = (categoryId) => {
         if (books.length === booksToFilter.length) {
@@ -24,16 +45,13 @@ export default function AllBooks() {
             li.classList.toggle('categories-clicked')
             edit.classList.toggle('editEnabled')
         })
-
     }
 
     const revertToAllBooks = () => {
         const newArr = [...books]
         setBooksToFilter(newArr)
     }
-    // const toggleClass = () => {
-    //     setIsLinkEnabled(!isEditLinkEnabled);
-    // };
+
     return (
         <Wrapper>
             <CategoryTitleWrapper>Categories</CategoryTitleWrapper>
@@ -57,6 +75,7 @@ export default function AllBooks() {
             <BooksWrapper>
                 {
                     booksToFilter && booksToFilter.map(book => (
+
                         <EachBook key={book.id}>
                             <div className="firstColumn">
                                 <img src={book.thumbnail} alt="" />
@@ -67,13 +86,31 @@ export default function AllBooks() {
                             </div>
                             <div className="secondColumn">
                                 <div className="bookTitle">{book.title}</div>
-                                <div className="bookDescription">{book.description.slice(0, 150)}...</div>
-                                <div className="readMoreLink">Read more</div>
+                                <div className="bookDescription">
+                                    <div>{book.description.slice(0, 150)}...</div>
+                                    <div></div>
+                                </div>
+                                <div className="readMoreLink" onClick={() => showModal(book.thumbnail, book.title, book.description, book.categoryId)}>Read more</div>
                             </div>
                         </EachBook>
                     ))
                 }
             </BooksWrapper>
-        </Wrapper>
+            <Modal title={bookInfoForModal.title} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                <div className="bookInModal">
+                    <div className="bookInModalFirstColumn">
+                        <img src={bookInfoForModal.thumbnail} alt="" style={{ width: '100px', height: '100px', borderRadius: '0' }} />
+                        {
+                            categories && categories.filter(category => category.id === bookInfoForModal.categoryId)
+                                .map(item => <div style={{ backgroundColor: `${item.color}` }} key={item.id} className="categoryInsideBook">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</div>)
+                        }
+                    </div>
+                    <div className="bookInModalFirstColumn">{bookInfoForModal.description}</div>
+                </div>
+            </Modal>
+
+
+
+        </Wrapper >
     )
 }

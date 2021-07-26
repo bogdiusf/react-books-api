@@ -36,6 +36,7 @@
 
 .bookTitle {
   font-size: 20px;
+  display: flex;
 }
 .bookDescription {
   margin-top: 10px;
@@ -45,4 +46,15 @@
   text-decoration: underline;
   color: blue;
   cursor: pointer;
+}
+.bookInModal {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.bookInModalFirstColumn {
+  display: flex;
+  flex-direction: column;
 }

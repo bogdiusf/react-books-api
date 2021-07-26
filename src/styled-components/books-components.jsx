@@ -11,7 +11,7 @@ export const Wrapper = Styled.div`
 
     @media screen and (max-width:1400px){
         width: 90%;
-        grid-template-columns: 25% 80%;
+        grid-template-columns: 25% 70%;
     }
 `
 export const CategoryTitleWrapper = Styled.div`
@@ -57,7 +57,7 @@ export const StyledLi = Styled.li`
 export const BooksWrapper = Styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-right: 100px;
+    
 `
 export const EachBook = Styled.div`
     border: 1px solid #0972bc;
