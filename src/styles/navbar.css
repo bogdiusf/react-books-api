@@ -38,7 +38,7 @@ ul {
   display: grid;
   width: 40%;
   justify-content: right;
-  grid-template-columns: 20% 0 20% 25%;
+  grid-template-columns: 20% 0 20% 30%;
   grid-auto-flow: row;
   align-items: center;
   margin-left: auto;
@@ -75,6 +75,7 @@ img {
 .mobile-nav-links-wrapper-expanded {
   display: flex !important;
   flex-direction: column;
+  
 }
 
 .mobileView-user-info {
