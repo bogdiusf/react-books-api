@@ -27,7 +27,6 @@
   transform-origin: 100%;
   position: fixed;
   top: 0;
-  width: 100%;
 }
 
 ul {
@@ -110,6 +109,23 @@ img {
 }
 
 /* MEDIA SCREEN QUERIES */
+
+@media screen and (min-width: 500px){
+    .mobile-nav-links-wrapper-expanded{
+        display: none !important;
+    }
+    .navbar-active {
+        height: 10vh;
+        width: 100%;
+        background-color: #0972bc;
+        animation: in 0.5s;
+        transform-origin: 100%;
+        position: relative;
+      }
+    .nav-title{
+        display: flex !important;
+    }
+}
 
 @media screen and (max-width: 1400px) {
   .nav-links {

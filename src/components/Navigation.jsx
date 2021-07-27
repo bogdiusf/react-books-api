@@ -81,9 +81,9 @@ export default function Navigation() {
                 </ul>
 
                 <div className="hamburger" onClick={() => toggleNavbar()}>
-                    <div className="line top-line"></div>
-                    <div className="line middle-line"></div>
-                    <div className="line bottom-line"></div>
+                    <div className="line"></div>
+                    <div className="line"></div>
+                    <div className="line"></div>
                 </div>
             </nav>
 
