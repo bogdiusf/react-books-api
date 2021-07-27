@@ -17,7 +17,6 @@ export default function Navigation() {
         const booksLibraryTitle = document.querySelector('.nav-title')
         const mobileNavLinksWrapper = document.querySelector('.mobile-nav-links-wrapper')
         hamburgerMenu.addEventListener('click', (e) => {
-            e.preventDefault()
             e.stopPropagation();
             if (document.body.style.overflow !== 'hidden') {
                 document.body.style.overflow = 'hidden'
@@ -38,14 +37,18 @@ export default function Navigation() {
             const mobileNavbar = document.querySelector('.mobile-nav-links-wrapper-expanded')
             const booksLibraryTitle = document.querySelector('.nav-title-hidden')
             e.target.addEventListener('click', (event) => {
-                event.preventDefault()
                 event.stopPropagation()
+                if (document.body.style.overflow !== 'hidden') {
+                    document.body.style.overflow = 'hidden'
+                }
+                else {
+                    document.body.style.overflow = 'scroll'
+                }
                 navbar.classList.remove('navbar-active')
                 mobileNavbar.classList.remove('mobile-nav-links-wrapper-expanded')
                 booksLibraryTitle.classList.remove('nav-title-hidden')
             })
         }
-
     }
 
     return (
@@ -78,9 +81,9 @@ export default function Navigation() {
                 </ul>
 
                 <div className="hamburger" onClick={() => toggleNavbar()}>
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
+                    <div className="line top-line"></div>
+                    <div className="line middle-line"></div>
+                    <div className="line bottom-line"></div>
                 </div>
             </nav>
 
