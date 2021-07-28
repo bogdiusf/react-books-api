@@ -63,7 +63,7 @@ export const StyledLi = Styled.li`
 export const BooksWrapper = Styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
-
+    animation: fadeIn 2s;
     @media screen and (max-width: 430px){
         display: grid;
         grid-template-columns: 1fr;

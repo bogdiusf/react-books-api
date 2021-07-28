@@ -1,117 +1,126 @@
 @keyframes in {
-  100% {
-    transform: scaleY(1);
-  }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .navbar {
-  height: 10vh;
-  background: #0972bc;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  transition: 1s;
+    height: 10vh;
+    background: #0972bc;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 1s;
 }
 
 .navbar-active {
-  height: 100vh;
-  width: 100%;
-  background-color: #0972bc;
-  animation: in 0.5s;
-  transform-origin: 100%;
-  position: fixed;
-  top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #0972bc;
+    animation: in 0.5s;
+    transform-origin: 100%;
+    position: fixed;
+    top: 0;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 .nav-links {
-  display: grid;
-  width: 40%;
-  justify-content: right;
-  grid-template-columns: 20% 0 20% 30%;
-  grid-auto-flow: row;
-  align-items: center;
-  margin-left: auto;
+    display: grid;
+    width: 40%;
+    justify-content: right;
+    grid-template-columns: 20% 0 20% 30%;
+    grid-auto-flow: row;
+    align-items: center;
+    margin-left: auto;
 }
 
 .nav-links>li:nth-child(3) {
-  padding-left: 20px;
-  margin-left: 20px;
+    padding-left: 20px;
+    margin-left: 20px;
 }
 
 .nav-links>span {
-  border-right: 1px solid white;
-  height: 10vh;
+    border-right: 1px solid white;
+    height: 10vh;
 }
 
 .nav-links>li>* {
-  color: white;
+    color: white;
 }
 
 img {
-  height: 70px;
-  width: 70px;
-  border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
 }
 
 .nav-title-hidden {
-  display: none !important;
+    display: none !important;
 }
 
 .mobile-nav-links-wrapper {
-  display: none;
+    display: none;
 }
 
 .mobile-nav-links-wrapper-expanded {
-  display: flex !important;
-  flex-direction: column;
-  
+    display: flex !important;
+    flex-direction: column;
+    animation: fadeIn 2s;
 }
 
 .mobileView-user-info {
-  display: flex;
-  margin-top: 70px;
-  margin-left: 20px;
-  align-items: center;
-  color: white;
-  gap: 20px;
-  font-size: 30px;
+    display: flex;
+    margin-top: 70px;
+    margin-left: 20px;
+    align-items: center;
+    color: white;
+    gap: 20px;
+    font-size: 30px;
 }
 
 .hidden-nav-links {
-  margin-left: 30px;
-  margin-top: 30px;
+    margin-left: 30px;
+    margin-top: 30px;
 }
 
 .hidden-nav-links>div:nth-child(1) {
-  font-size: 35px;
-  color: white;
+    font-size: 35px;
+    color: white;
 }
 
 .hidden-nav-links>div:nth-child(2) {
-  font-size: 35px;
-  color: white;
+    font-size: 35px;
+    color: white;
 }
 
 .hidden-nav-links>ul {
-  font-size: 25px;
-  color: white;
-  margin-left: 20px;
+    font-size: 25px;
+    color: white;
+    margin-left: 20px;
 }
 
 /* MEDIA SCREEN QUERIES */
 
-@media screen and (min-width: 500px){
-    .mobile-nav-links-wrapper-expanded{
+@media screen and (min-width: 500px) {
+    .mobile-nav-links-wrapper-expanded {
         display: none !important;
     }
     .navbar-active {
@@ -121,37 +130,37 @@ img {
         animation: in 0.5s;
         transform-origin: 100%;
         position: relative;
-      }
-    .nav-title{
+    }
+    .nav-title {
         display: flex !important;
     }
 }
 
 @media screen and (max-width: 1400px) {
-  .nav-links {
-    grid-template-columns: 25% 0 25% 35%;
-  }
+    .nav-links {
+        grid-template-columns: 25% 0 25% 35%;
+    }
 }
 
 @media screen and (max-width:430px) {
-  .nav-links {
-    display: none;
-  }
+    .nav-links {
+        display: none;
+    }
 }
 
 @media screen and (max-width:430px) {
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    margin-top: 2.5vh;
-    right: 20px;
-  }
-  .hamburger .line {
-    height: 5px;
-    width: 40px;
-    background-color: white;
-    margin: 4px;
-  }
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        margin-top: 2.5vh;
+        right: 20px;
+    }
+    .hamburger .line {
+        height: 5px;
+        width: 40px;
+        background-color: white;
+        margin: 4px;
+    }
 }

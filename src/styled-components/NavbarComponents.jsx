@@ -7,15 +7,24 @@ export const StyledLink = Styled(Link)`
   text-decoration: none;
 `
 export const StyledTitle = Styled.div`
-  font-size: 35px;
-  color: white;
-  width: fit-content;
-  align-items: center;
-  margin-left: 20px;
-  display: flex;
-  @media screen and (max-width: 430px){
-    font-size: 30px;
-    position: absolute;
-    margin-top: 2vh;
-  }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    animation: fadeIn 2s;
+    font-size: 35px;
+    color: white;
+    width: fit-content;
+    align-items: center;
+    margin-left: 20px;
+    display: flex;
+    @media screen and (max-width: 430px){
+        font-size: 30px;
+        position: absolute;
+        margin-top: 2vh;
+    }
 `
