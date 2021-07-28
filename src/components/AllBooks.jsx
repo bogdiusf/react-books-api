@@ -4,7 +4,7 @@ import '../styles/books.css'
 import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook } from '../styled-components/BooksComponents'
 import { Modal } from 'antd';
 import 'antd/dist/antd.css';
-import { filterBooks } from '../scripts/BooksScripts'
+import { filterBooks } from '../scripts/BooksMethods'
 
 export default function AllBooks() {
 

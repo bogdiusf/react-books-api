@@ -1,4 +1,4 @@
-import { filterBooks } from './BooksScripts'
+import { filterBooks } from './BooksMethods'
 
 export const toggleNavbar = () => {
     const navbar = document.querySelector('.navbar')
