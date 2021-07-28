@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { DataFromApiContext } from '../context/DataFromApi'
 import '../styles/books.css'
-import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook } from '../styled-components/books-components'
+import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook } from '../styled-components/BooksComponents'
 import { Modal } from 'antd';
 import 'antd/dist/antd.css';
+import { filterBooks } from '../scripts/BooksScripts'
 
 export default function AllBooks() {
 
@@ -13,6 +14,12 @@ export default function AllBooks() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [bookInfoForModal, setBookInfoForModal] = useState({})
 
+    const handleOk = () => {
+        setIsModalVisible(false);
+    }
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    }
     const showModal = (thumbnail, title, description, categoryId) => {
         setIsModalVisible(true);
         setBookInfoForModal({
@@ -20,30 +27,6 @@ export default function AllBooks() {
             title: title,
             description: description,
             categoryId: categoryId
-        })
-    };
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
-
-    const filterBooks = (categoryId) => {
-        if (books.length === booksToFilter.length) {
-            const newArr = booksToFilter.filter(book => book.categoryId === categoryId)
-            setBooksToFilter(newArr)
-        }
-        else {
-            setBooksToFilter(books.filter(book => book.categoryId === categoryId))
-        }
-
-        const li = document.getElementById(`category-${categoryId}`)
-        const edit = document.getElementById(`edit-${categoryId}`)
-        li.addEventListener('click', (e) => {
-            e.preventDefault()
-            li.classList.toggle('categories-clicked')
-            edit.classList.toggle('editEnabled')
         })
     }
 
@@ -60,7 +43,7 @@ export default function AllBooks() {
                             key={item.id}
                             className="categories"
                             id={`category-${item.id}`}
-                            onClick={() => filterBooks(item.id)}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                            onClick={() => filterBooks(item.id, books, booksToFilter, setBooksToFilter)}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                             <span className="editDisabled" id={`edit-${item.id}`}>edit</span>
                         </StyledLi>
                     ))

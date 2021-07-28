@@ -2,54 +2,16 @@ import React, { useContext } from "react";
 import '../styles/navbar.css'
 import { DataFromApiContext } from "../context/DataFromApi";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { StyledLink, StyledTitle } from '../styled-components/navbar-components'
+import { StyledLink, StyledTitle } from '../styled-components/NavbarComponents'
 import User from './User'
 import AllBooks from './AllBooks'
+import { toggleNavbar } from "../scripts/NavbarMethods";
+import { mobileFilterBooks, revertToAllBooks } from '../scripts/NavbarMethods'
 
 export default function Navigation() {
 
     const value = useContext(DataFromApiContext);
-    const { user, categories } = value;
-
-    const toggleNavbar = () => {
-        const hamburgerMenu = document.querySelector('.hamburger')
-        const navbar = document.querySelector('.navbar')
-        const booksLibraryTitle = document.querySelector('.nav-title')
-        const mobileNavLinksWrapper = document.querySelector('.mobile-nav-links-wrapper')
-        hamburgerMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (document.body.style.overflow !== 'hidden') {
-                document.body.style.overflow = 'hidden'
-            }
-            else {
-                document.body.style.overflow = 'scroll'
-            }
-            navbar.classList.toggle('navbar-active')
-            booksLibraryTitle.classList.toggle('nav-title-hidden')
-            mobileNavLinksWrapper.classList.toggle('mobile-nav-links-wrapper-expanded')
-        })
-    }
-
-    const collapseNavbar = (e) => {
-
-        if (e.target.innerHTML === 'All') {
-            const navbar = document.querySelector('.navbar-active')
-            const mobileNavbar = document.querySelector('.mobile-nav-links-wrapper-expanded')
-            const booksLibraryTitle = document.querySelector('.nav-title-hidden')
-            e.target.addEventListener('click', (event) => {
-                event.stopPropagation()
-                if (document.body.style.overflow !== 'hidden') {
-                    document.body.style.overflow = 'hidden'
-                }
-                else {
-                    document.body.style.overflow = 'scroll'
-                }
-                navbar.classList.remove('navbar-active')
-                mobileNavbar.classList.remove('mobile-nav-links-wrapper-expanded')
-                booksLibraryTitle.classList.remove('nav-title-hidden')
-            })
-        }
-    }
+    const { categories, books, setBooksToFilter, booksToFilter, user } = value
 
     return (
         <Router>
@@ -64,10 +26,10 @@ export default function Navigation() {
                         <div>All books</div>
                         <div>Categories</div>
                         <ul>
-                            <li onClick={(e) => collapseNavbar(e)}>All</li>
+                            <li onClick={() => revertToAllBooks(setBooksToFilter, books)}>All</li>
                             {
                                 categories && categories.map(item => (
-                                    <li key={item.id} >{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</li>
+                                    <li key={item.id} onClick={() => mobileFilterBooks(item.id, books, setBooksToFilter, booksToFilter)}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</li>
                                 ))
                             }
                         </ul>
