@@ -20,7 +20,7 @@ export const StyledTitle = Styled.div`
     color: white;
     width: fit-content;
     align-items: center;
-    margin-left: 20px;
+    margin-left: 5%;
     display: flex;
     @media screen and (max-width: 430px){
         font-size: 30px;
