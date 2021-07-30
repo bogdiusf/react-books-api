@@ -43,6 +43,6 @@ export default function Navbar() {
                 <div className="line"></div>
                 <div className="line"></div>
             </div>
-        </nav>
+        </nav >
     );
 }

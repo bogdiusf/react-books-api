@@ -5,6 +5,10 @@ export const StyledLink = Styled(Link)`
   font-size: 25px;
   color: black;
   text-decoration: none;
+  &:hover{
+    transition: 0.5s;
+    color: black;
+}
 `
 export const StyledTitle = Styled.div`
     @keyframes fadeIn {
@@ -15,6 +19,7 @@ export const StyledTitle = Styled.div`
             opacity: 1;
         }
     }
+
     animation: fadeIn 2s;
     font-size: 35px;
     color: white;

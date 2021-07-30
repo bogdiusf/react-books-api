@@ -5,12 +5,12 @@ export const DataFromApiContext = createContext();
 
 export default function DataFromApi({ children }) {
   const [books, setBooks] = useState([]);
-  const [booksToFilter, setBooksToFilter] = useState(null)
+  const [booksToFilter, setBooksToFilter] = useState(null);
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
 
   const getBooksFromApi = async () => {
-    const response = await axios.get("/books");
+    const response = await axios.get("https://books-api.adrvest.ro/books");
     const newArr = [];
     response.data.forEach((item) => {
       newArr.push(item);
@@ -20,7 +20,7 @@ export default function DataFromApi({ children }) {
   };
 
   const getCategoriesFromApi = async () => {
-    const response = await axios.get("/categories");
+    const response = await axios.get("https://books-api.adrvest.ro/categories");
     const newArr = [];
     response.data.forEach((item) => {
       newArr.push(item);
@@ -29,7 +29,7 @@ export default function DataFromApi({ children }) {
   };
 
   const getUserFromApi = async () => {
-    const response = await axios.get("/user");
+    const response = await axios.get("https://books-api.adrvest.ro/user");
     setUser(response.data);
   };
 
