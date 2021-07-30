@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { DataFromApiContext } from '../context/DataFromApi'
-import { Wrapper, WrapperChildOne, WrapperChildTwo, ProfilePic, Name } from '../styled-components/UserComponents'
+import { DataFromApiContext } from '../../context/DataFromApi'
+import { Wrapper, WrapperChildOne, WrapperChildTwo, ProfilePic, Name } from '../../styled-components/UserComponents'
 
-export default function User() {
+export default function UserPage() {
 
     const value = useContext(DataFromApiContext)
     const { user } = value

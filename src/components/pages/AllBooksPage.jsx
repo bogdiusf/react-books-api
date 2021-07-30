@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react'
-import { DataFromApiContext } from '../context/DataFromApi'
-import '../styles/books.css'
-import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook } from '../styled-components/BooksComponents'
+import { DataFromApiContext } from '../../context/DataFromApi'
+import '../../styles/books.css'
+import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook } from '../../styled-components/BooksComponents'
 import { Modal } from 'antd';
 import 'antd/dist/antd.css';
-import { filterBooks } from '../scripts/BooksMethods'
+import { filterBooks } from '../../utils/BooksMethods'
 
-export default function AllBooks() {
+export default function AllBooksPage() {
 
     const value = useContext(DataFromApiContext)
     const { categories, books, setBooksToFilter, booksToFilter } = value
