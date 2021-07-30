@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { DataFromApiContext } from '../../context/DataFromApi'
-import { Wrapper, WrapperChildOne, WrapperChildTwo, ProfilePic, Name } from '../../styled-components/UserComponents'
+import { Wrapper, WrapperChildOne, WrapperChildTwo, ProfilePic, Name } from '../../styled-components/StyledUserComponents'
 
 export default function UserPage() {
 

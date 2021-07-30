@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import '../styles/navbar.css'
 import { DataFromApiContext } from "../context/DataFromApi";
-import { StyledLink, StyledTitle } from '../styled-components/NavbarComponents'
+import { StyledLink, StyledTitle } from '../styled-components/StyledNavbarComponents'
 import { toggleNavbar } from "../utils/NavbarMethods";
 import { mobileFilterBooks, revertToAllBooks } from '../utils/NavbarMethods'
 
