@@ -34,10 +34,14 @@ export default function DataFromApi({ children }) {
     }
 
     useEffect(() => {
-        getBooksFromApi()
-        getCategoriesFromApi()
-        getUserFromApi()
-    }, [])
+        if (books && categories && user) {
+            return
+        } else {
+            getBooksFromApi()
+            getCategoriesFromApi()
+            getUserFromApi()
+        }
+    })
 
     const value = {
         books,
