@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import { DataFromApiContext } from '../../context/DataFromApi'
 import '../../styles/books.css'
 import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook, EditCategoryInput } from '../../styled-components/StyledBooksComponents'
@@ -16,6 +16,8 @@ export default function AllBooksPage() {
     const [bookInfoForModal, setBookInfoForModal] = useState({})
     const [isCategoryClicked, setIsCategoryClicked] = useState(null)
 
+    const categoryRef = useRef()
+
     const handleOk = () => {
         setIsModalVisible(false);
     }
@@ -32,14 +34,25 @@ export default function AllBooksPage() {
         })
     }
 
+    useEffect(() => {
+        const handler = (e) => {
+            if (!categoryRef.current.contains(e.target)) {
+                setIsCategoryClicked(null)
+            }
+        }
+        document.addEventListener('mousedown', handler)
 
+        return () => {
+            document.removeEventListener('mousedown', handler)
+        }
+    })
 
     return (
         <Wrapper>
             <CategoryTitleWrapper>Categories</CategoryTitleWrapper>
             <BooksTitleWrapper>Books ({booksToFilter?.length})</BooksTitleWrapper>
 
-            <CategoryWrapper>
+            <CategoryWrapper ref={categoryRef}>
 
                 <StyledLi style={{ backgroundColor: '#f26c4f' }} className="categories" onClick={() => {
                     setBooksToFilter([...books])

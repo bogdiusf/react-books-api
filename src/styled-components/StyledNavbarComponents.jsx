@@ -2,12 +2,12 @@ import Styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const StyledLink = Styled(Link)`
-  font-size: 25px;
-  color: black;
-  text-decoration: none;
-  &:hover{
-    transition: 0.5s;
+    font-size: 25px;
     color: black;
+    text-decoration: none;
+    &:hover{
+        transition: 0.5s;
+        color: black;
 }
 `
 export const StyledTitle = Styled.div`
