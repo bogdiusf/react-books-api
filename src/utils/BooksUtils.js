@@ -1,14 +1,18 @@
 export const filterBooks = (categoryId, books, booksToFilter, setBooksToFilter) => {
-    const li = document.getElementById(`category-${categoryId}`)
-    const edit = document.getElementById(`edit-${categoryId}`)
     if (books.length === booksToFilter.length) {
-        const newArr = booksToFilter.filter(book => book.categoryId === categoryId)
+        const newArr = booksToFilter.filter((book) => book.categoryId === categoryId)
         setBooksToFilter(newArr)
+    } else {
+        setBooksToFilter(books.filter((book) => book.categoryId === categoryId))
     }
-    else {
-        setBooksToFilter(books.filter(book => book.categoryId === categoryId))
-    }
+}
 
-    li.classList.toggle('categories-clicked')
-    edit.classList.toggle('editEnabled')
+export const handleKeyPress = (e, id, categories, setCategories, setIsCategoryClicked) => {
+    if (e.key === 'Enter') {
+        const categoriesUpdated = [...categories]
+        const itemToEditIndex = categoriesUpdated.findIndex((item) => item.id === id)
+        categoriesUpdated[itemToEditIndex].name = e.target.value
+        setCategories(categoriesUpdated)
+        setIsCategoryClicked(null)
+    }
 }

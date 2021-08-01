@@ -1,18 +1,20 @@
 import React, { useContext, useState } from 'react'
 import { DataFromApiContext } from '../../context/DataFromApi'
 import '../../styles/books.css'
-import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook } from '../../styled-components/StyledBooksComponents'
-import { Modal } from 'antd';
+import { Wrapper, CategoryTitleWrapper, BooksTitleWrapper, CategoryWrapper, StyledLi, BooksWrapper, EachBook, EditCategoryInput } from '../../styled-components/StyledBooksComponents'
+import { Modal, Input } from 'antd';
 import 'antd/dist/antd.css';
-import { filterBooks } from '../../utils/BooksUtils'
+import { filterBooks, handleKeyPress } from '../../utils/BooksUtils'
+
 
 export default function AllBooksPage() {
 
     const value = useContext(DataFromApiContext)
-    const { categories, books, setBooksToFilter, booksToFilter } = value
+    const { categories, setCategories, books, setBooksToFilter, booksToFilter } = value
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [bookInfoForModal, setBookInfoForModal] = useState({})
+    const [isCategoryClicked, setIsCategoryClicked] = useState(null)
 
     const handleOk = () => {
         setIsModalVisible(false);
@@ -30,25 +32,45 @@ export default function AllBooksPage() {
         })
     }
 
+
+
     return (
         <Wrapper>
             <CategoryTitleWrapper>Categories</CategoryTitleWrapper>
             <BooksTitleWrapper>Books ({booksToFilter?.length})</BooksTitleWrapper>
+
             <CategoryWrapper>
-                <StyledLi style={{ backgroundColor: '#f26c4f' }} className="categories" onClick={() => setBooksToFilter([...books])}>All</StyledLi>
+
+                <StyledLi style={{ backgroundColor: '#f26c4f' }} className="categories" onClick={() => {
+                    setBooksToFilter([...books])
+                    setIsCategoryClicked(null)
+                }}>All</StyledLi>
                 {
                     categories && categories.map(item => (
-                        <StyledLi
-                            style={{ backgroundColor: `${item.color}` }}
-                            key={item.id}
-                            className="categories"
-                            id={`category-${item.id}`}
-                            onClick={() => filterBooks(item.id, books, booksToFilter, setBooksToFilter)}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                            <span className="editDisabled" id={`edit-${item.id}`}>edit</span>
-                        </StyledLi>
+
+                        isCategoryClicked === item.id
+                            ?
+                            <EditCategoryInput style={{ backgroundColor: `${item.color}` }} key={item.id}>
+                                <Input onKeyPress={(e) => handleKeyPress(e, item.id, categories, setCategories, setIsCategoryClicked)} />
+                            </EditCategoryInput>
+                            :
+                            <StyledLi
+                                style={{ backgroundColor: `${item.color}` }}
+                                key={item.id}
+                                onClick={() => {
+                                    filterBooks(item.id, books, booksToFilter, setBooksToFilter)
+                                }}>
+                                {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                                <span onClick={(e) => {
+                                    e.stopPropagation()
+                                    setIsCategoryClicked(item.id)
+                                }}>Edit</span>
+                            </StyledLi>
                     ))
                 }
+
             </CategoryWrapper>
+
             <BooksWrapper>
                 {
                     booksToFilter && booksToFilter.map(book => (
@@ -73,6 +95,7 @@ export default function AllBooksPage() {
                     ))
                 }
             </BooksWrapper>
+
             <Modal title={bookInfoForModal.title} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                 <div className="bookInModal">
                     <div className="bookInModalFirstColumn">

@@ -52,13 +52,30 @@ export const StyledLi = Styled.li`
     padding: 10px;
     border-radius: 5px;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
+    font-weight: 300;
+    font-size: 20px;
     margin-left: 20px;
     border: 1px solid black;
     max-height: 40px;
     max-width: 250px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    
+    span {
+        display: none;
+        
+    }
+
+    &:hover{
+        span{
+            display: block;
+            color: white;
+            text-decoration: underline;
+        }
+    }
 `
 export const BooksWrapper = Styled.div`
     display: grid;
@@ -75,4 +92,21 @@ export const EachBook = Styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+`
+
+export const EditCategoryInput = Styled.div`
+    height: 40px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    
+
 `
