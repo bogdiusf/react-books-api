@@ -5,7 +5,7 @@ A simple `React` application that renders an online library. All information abo
 
 ## <div style="background-color:green; width: fit-content; padding: 10px;">Application URL</div>
 
-### <div style="display: flex; flex-direction:row; align-items:center;"><a href="https://books-library-112d9.web.app/)" target="_blank">Library</a> <img src="https://media.giphy.com/media/mBRLcBE5qCbe1xvwQ3/giphy.gif" width="30px" alt="gym" style="padding-left: 10px;"></div>
+<div style="display: flex; flex-direction:row; align-items:center;"><a href="https://books-library-112d9.web.app/)" target="_blank">Library</a> <img src="https://media.giphy.com/media/mBRLcBE5qCbe1xvwQ3/giphy.gif" width="30px" alt="gym" style="padding-left: 10px;"></div>
 
 <hr>
 

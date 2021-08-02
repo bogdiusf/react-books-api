@@ -1,0 +1,8 @@
+{
+    "short_name": "Online books library",
+    "name": "Online library that's fetching random data from an API",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
