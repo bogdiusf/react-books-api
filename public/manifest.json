@@ -1,8 +1,0 @@
-{
-  "short_name": "Books Library",
-  "name": "An online book library",
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
