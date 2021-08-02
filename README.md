@@ -1,5 +1,8 @@
 # <div style="background-color:yellow; width: fit-content; padding: 10px; display: flex; flex-direction: row; align-items: center; color: black;">Online library<img src="https://media.giphy.com/media/xT77Y1T0zY1gR5qe5O/giphy.gif" width="50px" height="40px" alt="gym" style="padding-left: 10px;"></div>
 
+A simple `React` application that renders an online library. All information about books / categories and user are fetched from an `api` that's been deployed on my own server.
+[Url to API](https://books-api.adrvest.ro/)
+
 ## <div style="background-color:green; width: fit-content; padding: 10px;">Application URL</div>
 
 ### <div style="display: flex; flex-direction:row; align-items:center;"><a href="https://books-library-112d9.web.app/)" target="_blank">Library</a> <img src="https://media.giphy.com/media/mBRLcBE5qCbe1xvwQ3/giphy.gif" width="30px" alt="gym" style="padding-left: 10px;"></div>
@@ -23,3 +26,12 @@
 
 -   Fix responsiveness for tablets
 -   Navbar toggle logic - switch from dom manipulation to react mindset
+
+<hr>
+
+## How to run this locally
+
+1. `git clone https://github.com/bogdiusf/react-books-api.git`
+2. `cd react-books-api`
+3. `npm install`
+4. `npm start`
