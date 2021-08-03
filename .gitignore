@@ -10,7 +10,7 @@
 
 # production
 /build
-/src/books-api
+/src/books-api/*
 
 # misc
 .DS_Store
