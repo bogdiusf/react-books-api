@@ -13,6 +13,5 @@ export default function Routes() {
                 <Route path='/user' component={UserPage} />
             </Switch>
         </Router>
-
     )
 }

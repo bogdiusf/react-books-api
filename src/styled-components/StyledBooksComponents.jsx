@@ -106,7 +106,4 @@ export const EditCategoryInput = Styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
-    
-
 `
