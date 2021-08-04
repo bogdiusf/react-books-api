@@ -53,7 +53,6 @@ export default function AllBooksPage() {
             <BooksTitleWrapper>Books ({booksToFilter?.length})</BooksTitleWrapper>
 
             <CategoryWrapper ref={categoryRef}>
-
                 <StyledLi style={{ backgroundColor: '#f26c4f' }} className="categories" onClick={() => {
                     setBooksToFilter([...books])
                     setIsCategoryClicked(null)
@@ -81,7 +80,6 @@ export default function AllBooksPage() {
                             </StyledLi>
                     ))
                 }
-
             </CategoryWrapper>
 
             <BooksWrapper>

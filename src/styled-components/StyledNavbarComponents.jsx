@@ -27,7 +27,7 @@ export const StyledTitle = Styled.div`
     align-items: center;
     margin-left: 5%;
     display: flex;
-    @media screen and (max-width: 430px){
+    @media screen and (max-width: 768px){
         font-size: 30px;
         position: absolute;
         margin-top: 2vh;

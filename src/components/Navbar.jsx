@@ -5,7 +5,7 @@ import { StyledLink, StyledTitle } from '../styled-components/StyledNavbarCompon
 import { toggleNavbar } from "../utils/NavbarUtils";
 import { mobileFilterBooks, revertToAllBooks } from '../utils/NavbarUtils'
 
-export default function Navbar() {
+const Navbar = () => {
 
     const value = useContext(DataFromApiContext);
     const { categories, books, setBooksToFilter, booksToFilter, user } = value
@@ -45,3 +45,5 @@ export default function Navbar() {
         </nav >
     );
 }
+
+export default Navbar

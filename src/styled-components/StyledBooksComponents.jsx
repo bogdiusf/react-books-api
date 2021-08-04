@@ -9,7 +9,13 @@ export const Wrapper = Styled.div`
     margin-top: 5vh;
     justify-content:center;
 
-    @media screen and (max-width: 430px){
+    @media screen and (max-width: 1400px){
+        width: 90%;
+    }
+    @media screen and (max-width: 1249px){
+        width: 100%;
+    }
+    @media screen and (max-width: 768px){
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -42,7 +48,6 @@ export const CategoryWrapper = Styled.ul`
     @media screen and (max-width:768px){
         display: none;
     }
-
 `
 export const StyledLi = Styled.li`
     padding: 10px;
@@ -76,11 +81,11 @@ export const StyledLi = Styled.li`
 export const BooksWrapper = Styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    @media screen and (max-width: 430px){
+
+    @media screen and (max-width: 768px){
         display: grid;
         grid-template-columns: 1fr;
     }
-    
 `
 export const EachBook = Styled.div`
     border: 1px solid #0972bc;
@@ -88,6 +93,12 @@ export const EachBook = Styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media screen and (max-width: 768px){
+        .secondColumn{
+            margin-right: auto;
+        }
+    }
 `
 
 export const EditCategoryInput = Styled.div`

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { DataFromApiContext } from '../../context/DataFromApi'
 import { Wrapper, WrapperChildOne, WrapperChildTwo, ProfilePic, Name } from '../../styled-components/StyledUserComponents'
 
-export default function UserPage() {
+const UserPage = () => {
 
     const value = useContext(DataFromApiContext)
     const { user } = value
@@ -24,3 +24,5 @@ export default function UserPage() {
         </Wrapper>
     )
 }
+
+export default UserPage

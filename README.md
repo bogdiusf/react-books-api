@@ -24,7 +24,6 @@ A simple `React` application that renders an online library. All information abo
 
 ## <div style="background-color:red; width: fit-content; padding: 10px;">To do list</div>
 
--   Fix responsiveness for tablets
 -   Navbar toggle logic - switch from dom manipulation to react mindset
 
 <hr>
