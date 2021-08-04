@@ -5,14 +5,10 @@ export const Wrapper = Styled.div`
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 0.3fr 0.7fr;
     margin-top: 5vh;
     justify-content:center;
 
-    @media screen and (max-width:1400px){
-        width: 90%;
-        grid-template-columns: 25% 70%;
-    }
     @media screen and (max-width: 430px){
         width: 100%;
         display: flex;

@@ -33,7 +33,6 @@ export default function Navbar() {
             </div>
             <ul className="nav-links">
                 <li><StyledLink to={'/'}>All books</StyledLink></li>
-                <span></span>
                 <li><img src={user.avatar} alt="user_avatar" /></li>
                 <li><StyledLink to={'/user'}>{user.first_name} {user.last_name}</StyledLink></li>
             </ul>
