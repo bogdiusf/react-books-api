@@ -15,7 +15,7 @@ export const Wrapper = Styled.div`
     @media screen and (max-width: 1249px){
         width: 100%;
     }
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 769px){
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -26,7 +26,7 @@ export const CategoryTitleWrapper = Styled.div`
     padding-left: 20px;
     font-weight: 400;
     
-    @media screen and (max-width:768px){
+    @media screen and (max-width:769px){
         display: none;
     }
 `
@@ -45,7 +45,7 @@ export const CategoryWrapper = Styled.ul`
     width: 250px;
     max-height: 250px;
     
-    @media screen and (max-width:768px){
+    @media screen and (max-width:769px){
         display: none;
     }
 `
@@ -82,7 +82,7 @@ export const BooksWrapper = Styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 769px){
         display: grid;
         grid-template-columns: 1fr;
     }
@@ -94,7 +94,7 @@ export const EachBook = Styled.div`
     flex-direction: row;
     justify-content: space-between;
 
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 769px){
         .secondColumn{
             margin-right: auto;
         }

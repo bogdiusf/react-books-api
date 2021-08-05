@@ -11,21 +11,13 @@ export default function DataFromApi({ children }) {
 
     const getBooksFromApi = async () => {
         const response = await axios.get('https://books-api.adrvest.ro/books')
-        const newArr = []
-        response.data.forEach((item) => {
-            newArr.push(item)
-        })
-        setBooks(newArr)
-        setBooksToFilter(newArr)
+        setBooks(response.data)
+        setBooksToFilter(response.data)
     }
 
     const getCategoriesFromApi = async () => {
         const response = await axios.get('https://books-api.adrvest.ro/categories')
-        const newArr = []
-        response.data.forEach((item) => {
-            newArr.push(item)
-        })
-        setCategories(newArr)
+        setCategories(response.data)
     }
 
     const getUserFromApi = async () => {
