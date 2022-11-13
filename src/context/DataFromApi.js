@@ -10,18 +10,24 @@ export default function DataFromApi({ children }) {
     const [user, setUser] = useState(null)
 
     const getBooksFromApi = async () => {
-        const response = await axios.get('https://books-api.adrvest.ro/books')
+        const response = await axios.get(
+            'https://books-api-filip.herokuapp.com/books'
+        )
         setBooks(response.data)
         setBooksToFilter(response.data)
     }
 
     const getCategoriesFromApi = async () => {
-        const response = await axios.get('https://books-api.adrvest.ro/categories')
+        const response = await axios.get(
+            'https://books-api-filip.herokuapp.com/categories'
+        )
         setCategories(response.data)
     }
 
     const getUserFromApi = async () => {
-        const response = await axios.get('https://books-api.adrvest.ro/user')
+        const response = await axios.get(
+            'https://books-api-filip.herokuapp.com/user'
+        )
         setUser(response.data)
     }
 
@@ -45,5 +51,9 @@ export default function DataFromApi({ children }) {
         user
     }
 
-    return <DataFromApiContext.Provider value={value}>{children}</DataFromApiContext.Provider>
+    return (
+        <DataFromApiContext.Provider value={value}>
+            {children}
+        </DataFromApiContext.Provider>
+    )
 }
