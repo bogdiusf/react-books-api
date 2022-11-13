@@ -78,13 +78,15 @@ const Navbar = () => {
                 </div>
                 <ul className="nav-links">
                     <li>
-                        <StyledLink to={'/'}>All books</StyledLink>
+                        <StyledLink onClick={() => history.push('/')}>
+                            All books
+                        </StyledLink>
                     </li>
                     <li>
                         <img src={user.avatar} alt="user_avatar" />
                     </li>
                     <li>
-                        <StyledLink to={'/user'}>
+                        <StyledLink onClick={() => history.push('/user')}>
                             {user.first_name} {user.last_name}
                         </StyledLink>
                     </li>
